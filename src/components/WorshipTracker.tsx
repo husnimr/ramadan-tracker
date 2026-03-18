@@ -87,12 +87,12 @@ export default function WorshipTracker() {
             <CardContent className="grid gap-3 p-6 pt-2">
 
                 {/* Fasting Tracker Section */}
-                <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-5 mb-4 border border-amber-100 shadow-sm relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-amber-200/20 rounded-full blur-xl -mr-6 -mt-6"></div>
+                <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 rounded-2xl p-5 mb-4 border border-amber-100 dark:border-amber-900/30 shadow-sm relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-amber-200/20 dark:bg-amber-500/10 rounded-full blur-xl -mr-6 -mt-6"></div>
                     <div className="relative z-10 flex justify-between items-center mb-3">
                         <div>
-                            <h3 className="font-bold text-base text-amber-900">Daily Fasting</h3>
-                            <p className="text-[11px] text-amber-700/80">Track your Sawm today</p>
+                            <h3 className="font-bold text-base text-amber-900 dark:text-amber-400">Daily Fasting</h3>
+                            <p className="text-[11px] text-amber-700/80 dark:text-amber-500/80">Track your Sawm today</p>
                         </div>
                         <Switch
                             checked={fastingStatus}
@@ -102,15 +102,15 @@ export default function WorshipTracker() {
                     </div>
 
                     {fastingStatus ? (
-                        <div className="bg-white/60 backdrop-blur-sm p-3 rounded-xl flex items-center gap-3 border border-amber-100/50">
+                        <div className="bg-white/60 dark:bg-amber-950/40 backdrop-blur-sm p-3 rounded-xl flex items-center gap-3 border border-amber-100/50 dark:border-amber-900/40">
                             <span className="text-xl">🌙</span>
                             <div>
-                                <p className="text-xs font-bold text-amber-800">Fasting Active</p>
-                                <p className="text-[10px] text-amber-600 leading-tight">May Allah accept your fast.</p>
+                                <p className="text-xs font-bold text-amber-800 dark:text-amber-300">Fasting Active</p>
+                                <p className="text-[10px] text-amber-600 dark:text-amber-400 leading-tight">May Allah accept your fast.</p>
                             </div>
                         </div>
                     ) : (
-                        <div className="bg-white/60 backdrop-blur-sm p-3 rounded-xl flex items-center gap-3 text-slate-500 border border-slate-100/50">
+                        <div className="bg-white/60 dark:bg-slate-900/40 backdrop-blur-sm p-3 rounded-xl flex items-center gap-3 text-slate-500 dark:text-slate-400 border border-slate-100/50 dark:border-slate-800/50">
                             <AlertCircle className="w-4 h-4" />
                             <p className="text-xs">Not fasting today</p>
                         </div>
@@ -118,13 +118,13 @@ export default function WorshipTracker() {
                 </div>
 
                 <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-1 rounded">Today</span>
-                    <span className="text-xs font-mono text-violet-600 font-bold">{progress}% Completed</span>
+                    <span className="text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/80 px-2 py-1 rounded">Today</span>
+                    <span className="text-xs font-mono text-violet-600 dark:text-violet-400 font-bold">{progress}% Completed</span>
                 </div>
                 {tasks.map((task) => (
                     <div
                         key={task.id}
-                        className={`flex items-center space-x-3 p-3 rounded-xl transition-all ${task.completed ? "bg-violet-50" : "hover:bg-slate-50"}`}
+                        className={`flex items-center space-x-3 p-3 rounded-xl transition-all ${task.completed ? "bg-violet-50 dark:bg-violet-900/10" : "hover:bg-slate-50 dark:hover:bg-slate-800/50"}`}
                     >
                         <Checkbox
                             id={task.id}
@@ -134,7 +134,7 @@ export default function WorshipTracker() {
                         />
                         <Label
                             htmlFor={task.id}
-                            className={`flex-1 cursor-pointer font-medium text-sm ${task.completed ? "text-slate-400 line-through decoration-violet-300" : "text-slate-700"
+                            className={`flex-1 cursor-pointer font-medium text-sm ${task.completed ? "text-slate-400 dark:text-slate-500 line-through decoration-violet-300 dark:decoration-violet-900" : "text-slate-700 dark:text-slate-200"
                                 }`}
                         >
                             {task.label}

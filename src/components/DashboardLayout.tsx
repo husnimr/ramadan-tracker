@@ -8,6 +8,7 @@ import InfoRow from "./InfoRow";
 import PrayerList from "./PrayerList";
 import SunInfoRow from "./SunInfoRow";
 import { Loader2, MapPin } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function DashboardLayout() {
     const [prayerData, setPrayerData] = useState<PrayerData | null>(null);
@@ -124,17 +125,18 @@ export default function DashboardLayout() {
     return (
         <div className="max-w-md mx-auto px-4 pb-24">
             {/* Header / Date */}
-            <header className="mb-6 text-center pt-2">
-                {/*  
-                    The visual reference has back/forward arrows for date navigation. 
-                    For now just static date.
-                 */}
-                <h2 className="text-lg font-bold text-foreground">
-                    {prayerData.date.hijri.day} {prayerData.date.hijri.month.en}, {prayerData.date.hijri.year}
-                </h2>
-                <p className="text-xs text-muted-foreground">
-                    {prayerData.date.readable}
-                </p>
+            <header className="mb-6 relative pt-2">
+                <div className="absolute right-0 top-1">
+                    <ThemeToggle />
+                </div>
+                <div className="text-center">
+                    <h2 className="text-lg font-bold text-foreground">
+                        {prayerData.date.hijri.day} {prayerData.date.hijri.month.en}, {prayerData.date.hijri.year}
+                    </h2>
+                    <p className="text-xs text-muted-foreground">
+                        {prayerData.date.readable}
+                    </p>
+                </div>
             </header>
 
             <HeroCards
