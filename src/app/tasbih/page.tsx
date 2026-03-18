@@ -71,15 +71,15 @@ export default function TasbihPage() {
     const rotation = count * anglePerBead;
 
     return (
-        <main className="min-h-screen bg-slate-50 text-slate-800 flex flex-col items-center justify-between pb-10 relative overflow-hidden">
+        <main className="min-h-screen bg-background text-foreground flex flex-col items-center justify-between pb-10 relative overflow-hidden">
             {/* Header */}
-            <div className="w-full bg-white/80 backdrop-blur-md sticky top-0 z-30 shadow-sm border-b border-slate-100">
+            <div className="w-full bg-background/80 backdrop-blur-md sticky top-0 z-30 shadow-sm border-b border-border">
                 <div className="max-w-md mx-auto px-6 py-4 flex items-center justify-between">
-                    <Button variant="ghost" size="icon" onClick={() => router.back()} className="rounded-full hover:bg-slate-100 -ml-2">
+                    <Button variant="ghost" size="icon" onClick={() => router.back()} className="rounded-full hover:bg-muted -ml-2">
                         <ArrowLeft className="w-6 h-6" />
                     </Button>
                     <h1 className="text-lg font-bold">Digital Tasbih</h1>
-                    <Button variant="ghost" size="icon" onClick={() => setVibrate(!vibrate)} className="rounded-full hover:bg-slate-100 -mr-2 text-slate-400 hover:text-violet-600">
+                    <Button variant="ghost" size="icon" onClick={() => setVibrate(!vibrate)} className="rounded-full hover:bg-muted -mr-2 text-muted-foreground hover:text-primary">
                         {vibrate ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
                     </Button>
                 </div>
@@ -90,11 +90,11 @@ export default function TasbihPage() {
 
                 {/* Dhikr Selector */}
                 <div className="flex items-center gap-4 mb-2 z-20">
-                    <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-slate-400 hover:text-violet-600" onClick={() => setSelectedDhikrIndex(prev => (prev - 1 + DHIKR_TYPES.length) % DHIKR_TYPES.length)}>
+                    <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-muted-foreground hover:text-primary" onClick={() => setSelectedDhikrIndex(prev => (prev - 1 + DHIKR_TYPES.length) % DHIKR_TYPES.length)}>
                         <ChevronLeft className="w-5 h-5" />
                     </Button>
-                    <span className="text-sm font-bold text-slate-700 min-w-[150px] text-center truncate">{DHIKR_TYPES[selectedDhikrIndex].name}</span>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-slate-400 hover:text-violet-600" onClick={() => setSelectedDhikrIndex(prev => (prev + 1) % DHIKR_TYPES.length)}>
+                    <span className="text-sm font-bold text-foreground min-w-[150px] text-center truncate">{DHIKR_TYPES[selectedDhikrIndex].name}</span>
+                    <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-muted-foreground hover:text-primary" onClick={() => setSelectedDhikrIndex(prev => (prev + 1) % DHIKR_TYPES.length)}>
                         <ChevronRight className="w-5 h-5" />
                     </Button>
                 </div>
@@ -127,7 +127,7 @@ export default function TasbihPage() {
                             return (
                                 <div
                                     key={i}
-                                    className={`absolute w-4 h-4 rounded-full shadow-sm transition-colors duration-300 ${isMarker ? "bg-amber-300 w-5 h-5 border-2 border-white" : "bg-slate-200"
+                                    className={`absolute w-4 h-4 rounded-full shadow-sm transition-colors duration-300 ${isMarker ? "bg-amber-300 w-5 h-5 border-2 border-background" : "bg-muted"
                                         }`}
                                     style={{
                                         left: `calc(50% + ${x}px - ${isMarker ? 10 : 8}px)`,
@@ -140,29 +140,29 @@ export default function TasbihPage() {
 
                     {/* Center Display / Tap Area */}
                     <div
-                        className="relative z-10 w-48 h-48 rounded-full bg-white shadow-xl shadow-violet-100 flex flex-col items-center justify-center cursor-pointer active:scale-95 transition-transform duration-100 select-none group border-4 border-slate-50"
+                        className="relative z-10 w-48 h-48 rounded-full bg-card shadow-lg dark:shadow-none flex flex-col items-center justify-center cursor-pointer active:scale-95 transition-transform duration-100 select-none group border-4 border-muted"
                         onClick={handleTap}
                     >
-                        <div className={`absolute inset-0 rounded-full bg-violet-50 opacity-0 transition-opacity duration-300 ${isPressed ? "opacity-100 scale-110" : "group-hover:opacity-50"}`}></div>
+                        <div className={`absolute inset-0 rounded-full bg-primary/20 opacity-0 transition-opacity duration-300 ${isPressed ? "opacity-100 scale-110" : "group-hover:opacity-50"}`}></div>
 
-                        <span className="text-6xl font-black text-slate-800 tabular-nums relative z-10 tracking-tight">
+                        <span className="text-6xl font-black text-foreground tabular-nums relative z-10 tracking-tight">
                             {count}
                         </span>
-                        <span className="text-xs font-medium text-slate-400 mt-2 uppercase tracking-widest relative z-10">
+                        <span className="text-xs font-medium text-muted-foreground mt-2 uppercase tracking-widest relative z-10">
                             {target === 0 ? "Infinite" : `/ ${target}`}
                         </span>
                     </div>
 
                     {/* Indicator Triangle at Top */}
-                    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[12px] border-t-violet-500 drop-shadow-sm z-20"></div>
+                    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[12px] border-t-primary drop-shadow-sm z-20"></div>
                 </div>
 
                 {/* Arabic Display */}
                 <div className="text-center mb-6 h-20 flex flex-col justify-center px-4">
-                    <p className="font-amiri text-2xl md:text-3xl text-slate-800 mb-1 leading-relaxed transition-all duration-300" dir="rtl">
+                    <p className="font-amiri text-2xl md:text-3xl text-foreground mb-1 leading-relaxed transition-all duration-300" dir="rtl">
                         {DHIKR_TYPES[selectedDhikrIndex].arabic}
                     </p>
-                    <p className="text-xs text-slate-500 font-medium max-w-xs mx-auto line-clamp-2">
+                    <p className="text-xs text-muted-foreground font-medium max-w-xs mx-auto line-clamp-2">
                         "{DHIKR_TYPES[selectedDhikrIndex].meaning}"
                     </p>
                 </div>
@@ -172,14 +172,14 @@ export default function TasbihPage() {
                     <Button
                         variant="outline"
                         size="icon"
-                        className="h-12 w-12 rounded-full border-slate-200 text-slate-500 hover:text-violet-600 hover:bg-violet-50"
+                        className="h-12 w-12 rounded-full border-border text-muted-foreground hover:text-primary hover:bg-muted"
                         onClick={resetCount}
                     >
                         <RotateCcw className="w-5 h-5" />
                     </Button>
 
                     <Button
-                        className="h-12 px-6 rounded-full bg-slate-900 text-white hover:bg-slate-800 font-bold"
+                        className="h-12 px-6 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
                         onClick={handleTap}
                     >
                         Tap to Count
@@ -188,17 +188,17 @@ export default function TasbihPage() {
                     <Button
                         variant="outline"
                         size="icon"
-                        className="h-12 w-12 rounded-full border-slate-200 text-slate-500 hover:text-violet-600 hover:bg-violet-50 relative"
+                        className="h-12 w-12 rounded-full border-border text-muted-foreground hover:text-primary hover:bg-muted relative"
                         onClick={changeTarget}
                     >
-                        <span className="text-[10px] font-bold absolute -top-1 -right-1 bg-violet-600 text-white w-5 h-5 rounded-full flex items-center justify-center shadow-sm">
+                        <span className="text-[10px] font-bold absolute -top-1 -right-1 bg-primary text-primary-foreground w-5 h-5 rounded-full flex items-center justify-center shadow-sm">
                             {target === 0 ? "∞" : target}
                         </span>
                         <Settings className="w-5 h-5" />
                     </Button>
                 </div>
 
-                <p className="mt-8 text-xs text-slate-400 max-w-[200px] text-center">
+                <p className="mt-8 text-xs text-muted-foreground max-w-[200px] text-center">
                     Tip: Tap anywhere on the circle or press the button to count.
                 </p>
 
