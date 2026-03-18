@@ -77,11 +77,11 @@ export default function HadithPage() {
     });
 
     return (
-        <main className="min-h-screen bg-slate-50 text-slate-800 pb-24">
+        <main className="min-h-screen bg-background text-foreground pb-24">
             {/* Header */}
-            <div className="bg-white sticky top-0 z-30 shadow-sm border-b border-slate-100">
+            <div className="bg-background/80 backdrop-blur-md sticky top-0 z-30 shadow-sm border-b border-border">
                 <div className="max-w-md mx-auto px-6 py-4 flex items-center justify-between">
-                    <Button variant="ghost" size="icon" onClick={() => router.back()} className="rounded-full hover:bg-slate-100 -ml-2">
+                    <Button variant="ghost" size="icon" onClick={() => router.back()} className="rounded-full hover:bg-muted -ml-2">
                         <ArrowLeft className="w-6 h-6" />
                     </Button>
                     <h1 className="text-lg font-bold">Noble Hadith</h1>
@@ -124,10 +124,10 @@ export default function HadithPage() {
                 {/* Search & Filter */}
                 <div className="space-y-4">
                     <div className="relative">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                         <Input
                             placeholder="Search topics or narrators..."
-                            className="pl-10 rounded-xl bg-white border-slate-200 focus:border-slate-800 transition-colors"
+                            className="pl-10 rounded-xl bg-card border-border focus:border-primary transition-colors text-foreground placeholder:text-muted-foreground"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
@@ -139,8 +139,8 @@ export default function HadithPage() {
                                 key={category}
                                 onClick={() => setActiveCategory(category)}
                                 className={`px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all ${activeCategory === category
-                                        ? "bg-slate-800 text-white shadow-md shadow-slate-200"
-                                        : "bg-white text-slate-500 hover:bg-slate-100 border border-slate-100"
+                                        ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
+                                        : "bg-card text-muted-foreground hover:text-foreground hover:bg-muted border border-border"
                                     }`}
                             >
                                 {category}
@@ -152,38 +152,38 @@ export default function HadithPage() {
                 {/* Hadith List */}
                 <div className="space-y-4">
                     {filteredHadiths.map(hadith => (
-                        <Card key={hadith.id} className="border-0 shadow-sm hover:shadow-md transition-all duration-300 group bg-white">
+                        <Card key={hadith.id} className="border border-border shadow-sm hover:shadow-md transition-all duration-300 group bg-card text-card-foreground">
                             <CardContent className="p-5">
                                 <div className="flex justify-between items-start mb-3">
                                     <div className="flex items-center gap-2">
-                                        <div className="h-6 w-1 bg-violet-500 rounded-full"></div>
-                                        <span className="text-xs font-bold text-violet-600 uppercase tracking-wider">{hadith.source}</span>
+                                        <div className="h-6 w-1 bg-primary rounded-full"></div>
+                                        <span className="text-xs font-bold text-primary uppercase tracking-wider">{hadith.source}</span>
                                     </div>
                                     <div className="flex gap-1">
-                                        <Button variant="ghost" size="icon" className="h-7 w-7 text-slate-300 hover:text-red-500 rounded-full">
+                                        <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-red-500 hover:bg-red-500/10 rounded-full">
                                             <Heart className="w-3.5 h-3.5" />
                                         </Button>
                                     </div>
                                 </div>
 
-                                <p className="font-amiri text-xl mb-3 text-slate-800 leading-loose" dir="rtl">
+                                <p className="font-amiri text-xl mb-3 text-foreground leading-loose" dir="rtl">
                                     {hadith.arabic}
                                 </p>
 
-                                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                                     "{hadith.text}"
                                 </p>
 
-                                <div className="flex items-center justify-between pt-3 border-t border-slate-50">
-                                    <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
+                                <div className="flex items-center justify-between pt-3 border-t border-border/50">
+                                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
                                         <User className="w-3 h-3" />
                                         <span>{hadith.narrator}</span>
                                     </div>
                                     <div className="flex gap-2">
-                                        <Button variant="ghost" size="sm" className="h-6 text-[10px] text-slate-400 hover:text-slate-800">
+                                        <Button variant="ghost" size="sm" className="h-6 text-[10px] text-muted-foreground hover:text-primary hover:bg-muted rounded-full">
                                             <Copy className="w-3 h-3 mr-1" /> Copy
                                         </Button>
-                                        <Button variant="ghost" size="sm" className="h-6 text-[10px] text-slate-400 hover:text-slate-800">
+                                        <Button variant="ghost" size="sm" className="h-6 text-[10px] text-muted-foreground hover:text-primary hover:bg-muted rounded-full">
                                             <Share2 className="w-3 h-3 mr-1" /> Share
                                         </Button>
                                     </div>
@@ -194,7 +194,7 @@ export default function HadithPage() {
 
                     {filteredHadiths.length === 0 && (
                         <div className="text-center py-10">
-                            <p className="text-slate-400 text-sm">No hadith found matching your search.</p>
+                            <p className="text-muted-foreground text-sm">No hadith found matching your search.</p>
                         </div>
                     )}
                 </div>
