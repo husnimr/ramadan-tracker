@@ -9,8 +9,12 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import BottomNav from "@/components/BottomNav";
 import LastReadCard from "@/components/LastReadCard";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 export default function QuranPage() {
+    const router = useRouter();
     const [surahs, setSurahs] = useState<Surah[]>([]);
     const [filteredSurahs, setFilteredSurahs] = useState<Surah[]>([]);
     const [loading, setLoading] = useState(true);
@@ -40,11 +44,19 @@ export default function QuranPage() {
 
     return (
         <main className="min-h-screen bg-background text-foreground pb-24">
-            <div className="max-w-md mx-auto px-4 pt-8">
+            {/* Header */}
+            <div className="w-full bg-background/80 backdrop-blur-md sticky top-0 z-30 shadow-sm border-b border-border mb-4">
+                <div className="max-w-md mx-auto px-6 py-4 flex items-center justify-between">
+                    <Button variant="ghost" size="icon" onClick={() => router.back()} className="rounded-full hover:bg-muted -ml-2 shrink-0">
+                        <ArrowLeft className="w-6 h-6" />
+                    </Button>
+                    <h1 className="text-lg font-bold">Al-Quran</h1>
+                    <div className="w-10"></div>
+                </div>
+            </div>
+
+            <div className="max-w-md mx-auto px-4 pt-2">
                 <header className="mb-6">
-                    <h1 className="text-3xl font-bold text-primary font-serif mb-2">
-                        Al-Quran
-                    </h1>
                     <p className="text-muted-foreground text-sm mb-4">
                         Read and reflect upon the holy verses.
                     </p>
