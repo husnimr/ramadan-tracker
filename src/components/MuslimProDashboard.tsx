@@ -359,11 +359,11 @@ export default function MuslimProDashboard() {
                                 const isToday = i === 29;
                                 const value = isToday ? worshipProgress : (worshipHistory[dateKey] || 0);
 
-                                let colorClass = "bg-slate-100";
-                                if (value > 0) colorClass = "bg-violet-200";
-                                if (value >= 40) colorClass = "bg-violet-400";
-                                if (value >= 70) colorClass = "bg-violet-600";
-                                if (value === 100) colorClass = "bg-violet-800";
+                                let colorClass = "bg-slate-100 dark:bg-slate-800";
+                                if (value > 0) colorClass = "bg-violet-200 dark:bg-amber-900/60";
+                                if (value >= 40) colorClass = "bg-violet-400 dark:bg-amber-700/80";
+                                if (value >= 70) colorClass = "bg-violet-600 dark:bg-amber-600";
+                                if (value === 100) colorClass = "bg-violet-800 dark:bg-amber-500";
 
                                 return (
                                     <div
@@ -378,13 +378,13 @@ export default function MuslimProDashboard() {
                             })}
                         </div>
 
-                        <div className="flex items-center justify-end gap-1.5 text-[9px] text-slate-400 mt-2">
+                        <div className="flex items-center justify-end gap-1.5 text-[9px] text-slate-400 dark:text-slate-500 mt-2">
                             <span>Less</span>
-                            <div className="w-2.5 h-2.5 rounded-sm bg-slate-100"></div>
-                            <div className="w-2.5 h-2.5 rounded-sm bg-violet-200"></div>
-                            <div className="w-2.5 h-2.5 rounded-sm bg-violet-400"></div>
-                            <div className="w-2.5 h-2.5 rounded-sm bg-violet-600"></div>
-                            <div className="w-2.5 h-2.5 rounded-sm bg-violet-800"></div>
+                            <div className="w-2.5 h-2.5 rounded-sm bg-slate-100 dark:bg-slate-800"></div>
+                            <div className="w-2.5 h-2.5 rounded-sm bg-violet-200 dark:bg-amber-900/60"></div>
+                            <div className="w-2.5 h-2.5 rounded-sm bg-violet-400 dark:bg-amber-700/80"></div>
+                            <div className="w-2.5 h-2.5 rounded-sm bg-violet-600 dark:bg-amber-600"></div>
+                            <div className="w-2.5 h-2.5 rounded-sm bg-violet-800 dark:bg-amber-500"></div>
                             <span>More</span>
                         </div>
                     </div>
