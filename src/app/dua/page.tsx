@@ -80,11 +80,11 @@ export default function DuaPage() {
     });
 
     return (
-        <main className="min-h-screen bg-slate-50 text-slate-800 pb-24">
+        <main className="min-h-screen bg-background text-foreground pb-24">
             {/* Header */}
-            <div className="bg-white sticky top-0 z-30 shadow-sm border-b border-slate-100">
+            <div className="bg-background/80 backdrop-blur-md sticky top-0 z-30 shadow-sm border-b border-border">
                 <div className="max-w-md mx-auto px-6 py-4 flex items-center justify-between">
-                    <Button variant="ghost" size="icon" onClick={() => router.back()} className="rounded-full hover:bg-slate-100 -ml-2">
+                    <Button variant="ghost" size="icon" onClick={() => router.back()} className="rounded-full hover:bg-muted -ml-2">
                         <ArrowLeft className="w-6 h-6" />
                     </Button>
                     <h1 className="text-lg font-bold">Dua Collection</h1>
@@ -97,10 +97,10 @@ export default function DuaPage() {
                 {/* Search & Filter */}
                 <div className="space-y-4">
                     <div className="relative">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                         <Input
                             placeholder="Search dua..."
-                            className="pl-10 rounded-xl bg-white border-slate-200 focus:border-violet-500 transition-colors"
+                            className="pl-10 rounded-xl bg-card border-border focus:border-primary transition-colors text-foreground placeholder:text-muted-foreground"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
@@ -112,8 +112,8 @@ export default function DuaPage() {
                                 key={category}
                                 onClick={() => setActiveCategory(category)}
                                 className={`px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all ${activeCategory === category
-                                        ? "bg-violet-600 text-white shadow-md shadow-violet-200"
-                                        : "bg-white text-slate-500 hover:bg-slate-100 border border-slate-100"
+                                        ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
+                                        : "bg-card text-muted-foreground hover:text-foreground hover:bg-muted border border-border"
                                     }`}
                             >
                                 {category}
@@ -126,43 +126,43 @@ export default function DuaPage() {
                 <div className="space-y-4">
                     {filteredDuas.length > 0 ? (
                         filteredDuas.map(dua => (
-                            <Card key={dua.id} className="border-0 shadow-sm hover:shadow-md transition-all duration-300 group bg-white overflow-hidden">
+                            <Card key={dua.id} className="border border-border shadow-sm hover:shadow-md transition-all duration-300 group bg-card text-card-foreground overflow-hidden">
                                 <CardContent className="p-5">
                                     <div className="flex justify-between items-start mb-4">
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-8 h-8 rounded-full bg-violet-50 flex items-center justify-center text-violet-600">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
                                                 <span className="font-amiri text-lg">🤲</span>
                                             </div>
                                             <div>
-                                                <h3 className="font-bold text-slate-800">{dua.title}</h3>
-                                                <span className="text-[10px] text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">{dua.category}</span>
+                                                <h3 className="font-bold text-foreground text-sm">{dua.title}</h3>
+                                                <span className="text-[10px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full mt-1 inline-block">{dua.category}</span>
                                             </div>
                                         </div>
-                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full">
+                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-red-500 hover:bg-red-500/10 rounded-full">
                                             <Heart className="w-4 h-4" />
                                         </Button>
                                     </div>
 
                                     <div className="space-y-4 text-center py-2">
-                                        <p className="font-amiri text-2xl text-slate-800 leading-loose" dir="rtl">
+                                        <p className="font-amiri text-2xl text-foreground leading-loose" dir="rtl">
                                             {dua.arabic}
                                         </p>
 
                                         <div className="space-y-1">
-                                            <p className="text-xs text-violet-600 font-medium italic">
+                                            <p className="text-xs text-primary font-medium italic">
                                                 {dua.transliteration}
                                             </p>
-                                            <p className="text-sm text-slate-600 leading-relaxed">
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
                                                 "{dua.translation}"
                                             </p>
                                         </div>
                                     </div>
 
-                                    <div className="flex justify-center gap-3 mt-4 pt-4 border-t border-slate-50">
-                                        <Button variant="ghost" size="sm" className="h-8 text-xs text-slate-500 hover:text-violet-600 gap-1.5">
+                                    <div className="flex justify-center gap-3 mt-4 pt-4 border-t border-border/50">
+                                        <Button variant="ghost" size="sm" className="h-8 text-xs text-muted-foreground hover:text-primary hover:bg-muted gap-1.5 rounded-full">
                                             <Copy className="w-3.5 h-3.5" /> Copy
                                         </Button>
-                                        <Button variant="ghost" size="sm" className="h-8 text-xs text-slate-500 hover:text-violet-600 gap-1.5">
+                                        <Button variant="ghost" size="sm" className="h-8 text-xs text-muted-foreground hover:text-primary hover:bg-muted gap-1.5 rounded-full">
                                             <Share2 className="w-3.5 h-3.5" /> Share
                                         </Button>
                                     </div>
@@ -171,7 +171,7 @@ export default function DuaPage() {
                         ))
                     ) : (
                         <div className="text-center py-10">
-                            <p className="text-slate-400 text-sm">No dua found.</p>
+                            <p className="text-muted-foreground text-sm">No dua found.</p>
                         </div>
                     )}
                 </div>
