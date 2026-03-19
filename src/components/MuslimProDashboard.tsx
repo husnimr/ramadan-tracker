@@ -19,7 +19,7 @@ export default function MuslimProDashboard() {
     const [loading, setLoading] = useState(true);
     const [city, setCity] = useState("Jakarta");
     const [country, setCountry] = useState("Indonesia");
-    const [coords, setCoords] = useState<{ lat: number; long: number } | null>({ lat: -7.7956, long: 110.3695 });
+    const [coords, setCoords] = useState<{ lat: number; long: number } | null>(null);
 
     const [nextPrayer, setNextPrayer] = useState<{ name: string; time: string } | null>(null);
     const [timeRemaining, setTimeRemaining] = useState<string>("");
